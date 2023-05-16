@@ -112,7 +112,7 @@
             // 
             this.dtpGiorno.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dtpGiorno.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dtpGiorno.Location = new System.Drawing.Point(153, 243);
+            this.dtpGiorno.Location = new System.Drawing.Point(153, 189);
             this.dtpGiorno.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.dtpGiorno.Name = "dtpGiorno";
             this.dtpGiorno.Size = new System.Drawing.Size(114, 29);
@@ -122,7 +122,7 @@
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(73, 247);
+            this.label4.Location = new System.Drawing.Point(73, 193);
             this.label4.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(67, 24);
@@ -133,7 +133,7 @@
             // 
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(286, 247);
+            this.label5.Location = new System.Drawing.Point(286, 193);
             this.label5.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(62, 24);
@@ -143,7 +143,7 @@
             // nudDurata
             // 
             this.nudDurata.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.nudDurata.Location = new System.Drawing.Point(153, 191);
+            this.nudDurata.Location = new System.Drawing.Point(153, 245);
             this.nudDurata.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.nudDurata.Name = "nudDurata";
             this.nudDurata.Size = new System.Drawing.Size(58, 29);
@@ -153,7 +153,7 @@
             // 
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.Location = new System.Drawing.Point(76, 193);
+            this.label6.Location = new System.Drawing.Point(76, 247);
             this.label6.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(64, 24);
@@ -186,7 +186,7 @@
             // 
             this.cmbOrario.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cmbOrario.FormattingEnabled = true;
-            this.cmbOrario.Location = new System.Drawing.Point(353, 244);
+            this.cmbOrario.Location = new System.Drawing.Point(353, 190);
             this.cmbOrario.Name = "cmbOrario";
             this.cmbOrario.Size = new System.Drawing.Size(116, 32);
             this.cmbOrario.TabIndex = 15;
