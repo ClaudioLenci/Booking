@@ -1,5 +1,9 @@
-﻿using System;
+﻿using CsvHelper;
+using Microsoft.SqlServer.Server;
+using System;
 using System.Collections.Generic;
+using System.Globalization;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -8,15 +12,34 @@ namespace Classi
 {
     public class Calendario
     {
-        public List<Prenotazione> prenotazioni { get; }
+        public List<Prenotazione> prenotazioni { get; set; }
         public int min;
         public int max;
 
-        public Calendario(int min, int max)
+        public Calendario(int min, int max, string file)
         {
             prenotazioni = new List<Prenotazione>();
             this.min = min;
             this.max = max;
+            apridati(file);
+        }
+
+        public void apridati(string file)
+        {
+            using (var reader = new StreamReader(file))
+            using (var csv = new CsvReader(reader, CultureInfo.InvariantCulture))
+            {
+                prenotazioni = csv.GetRecords<Prenotazione>().ToList();
+            }
+        }
+
+        public void salvadati(string file)
+        {
+            using (var writer = new StreamWriter(file))
+            using (var csv = new CsvWriter(writer, CultureInfo.InvariantCulture))
+            {
+                csv.WriteRecords(prenotazioni);
+            }
         }
 
         public List<Prenotazione> GetPrenotazioni()
