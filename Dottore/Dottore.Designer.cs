@@ -118,6 +118,7 @@
             this.Controls.Add(this.lstPrenotazioni);
             this.Name = "Dottore";
             this.Text = "Dottore";
+            this.Load += new System.EventHandler(this.Dottore_Load);
             this.ResumeLayout(false);
 
         }
