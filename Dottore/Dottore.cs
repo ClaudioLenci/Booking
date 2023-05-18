@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace Dottore
 {
-    public partial class Form1 : Form
+    public partial class Dottore : Form
     {
-        public Form1()
+        public Dottore()
         {
             InitializeComponent();
         }
