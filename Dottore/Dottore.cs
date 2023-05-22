@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Classi;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -12,9 +13,32 @@ namespace Dottore
 {
     public partial class Dottore : Form
     {
+        Calendario calendario;
         public Dottore()
         {
             InitializeComponent();
+        }
+
+        private void Dottore_Load(object sender, EventArgs e)
+        {
+            calendario = new Calendario(9, 20, @"../../../dati.csv");
+            RiempiListview();
+        }
+
+        private void RiempiListview()
+        {
+            foreach (var p in calendario.prenotazioni)
+            {
+                ListViewItem item = new ListViewItem(p.id.ToString());
+                item.SubItems.Add(p.nome);
+                item.SubItems.Add(p.data_nascita.ToString().Substring(0, 10));
+                item.SubItems.Add(p.tipologia);
+                item.SubItems.Add(p.inizio.Date.ToString().Substring(0, 10));
+                item.SubItems.Add(p.inizio.TimeOfDay.ToString().Substring(0, 5));
+                item.SubItems.Add(p.durata.ToString() + " ore");
+                item.SubItems.Add(p.altro);
+                lstPrenotazioni.Items.Add(item);
+            }
         }
     }
 }

@@ -15,30 +15,36 @@ namespace Classi
         public List<Prenotazione> prenotazioni { get; set; }
         public int min;
         public int max;
+        private string file;
 
         public Calendario(int min, int max, string file)
         {
             prenotazioni = new List<Prenotazione>();
             this.min = min;
             this.max = max;
-            apridati(file);
+            this.file = file;
+            apridati();
         }
 
-        public void apridati(string file)
+        public void apridati()
         {
             using (var reader = new StreamReader(file))
-            using (var csv = new CsvReader(reader, CultureInfo.InvariantCulture))
             {
-                prenotazioni = csv.GetRecords<Prenotazione>().ToList();
+                using (var csv = new CsvReader(reader, CultureInfo.InvariantCulture))
+                {
+                    prenotazioni = csv.GetRecords<Prenotazione>().ToList();
+                }
             }
         }
 
-        public void salvadati(string file)
+        public void salvadati()
         {
             using (var writer = new StreamWriter(file))
-            using (var csv = new CsvWriter(writer, CultureInfo.InvariantCulture))
             {
-                csv.WriteRecords(prenotazioni);
+                using (var csv = new CsvWriter(writer, CultureInfo.InvariantCulture))
+                {
+                    csv.WriteRecords(prenotazioni);
+                }
             }
         }
 
@@ -49,7 +55,7 @@ namespace Classi
 
         public List<Prenotazione> GetPrenotazioniFuture()
         {
-            return prenotazioni.OrderBy(p => p.inizio).Where(p => p.inizio >= DateTime.Now).ToList();
+            return prenotazioni.OrderBy(p => p.inizio).Where(p => p.inizio >= DateTime.Today).ToList();
         }
 
         public bool Libero(Prenotazione p)
