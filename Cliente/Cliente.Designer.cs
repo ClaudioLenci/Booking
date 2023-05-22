@@ -50,7 +50,7 @@
             // 
             this.txtNome.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtNome.Location = new System.Drawing.Point(153, 28);
-            this.txtNome.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txtNome.Margin = new System.Windows.Forms.Padding(2);
             this.txtNome.Name = "txtNome";
             this.txtNome.Size = new System.Drawing.Size(194, 29);
             this.txtNome.TabIndex = 0;
@@ -71,7 +71,7 @@
             this.dtpNascita.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dtpNascita.Format = System.Windows.Forms.DateTimePickerFormat.Short;
             this.dtpNascita.Location = new System.Drawing.Point(153, 81);
-            this.dtpNascita.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.dtpNascita.Margin = new System.Windows.Forms.Padding(2);
             this.dtpNascita.Name = "dtpNascita";
             this.dtpNascita.Size = new System.Drawing.Size(114, 29);
             this.dtpNascita.TabIndex = 3;
@@ -92,7 +92,7 @@
             this.cmbTipologia.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cmbTipologia.FormattingEnabled = true;
             this.cmbTipologia.Location = new System.Drawing.Point(153, 136);
-            this.cmbTipologia.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.cmbTipologia.Margin = new System.Windows.Forms.Padding(2);
             this.cmbTipologia.Name = "cmbTipologia";
             this.cmbTipologia.Size = new System.Drawing.Size(194, 32);
             this.cmbTipologia.TabIndex = 5;
@@ -113,7 +113,7 @@
             this.dtpGiorno.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dtpGiorno.Format = System.Windows.Forms.DateTimePickerFormat.Short;
             this.dtpGiorno.Location = new System.Drawing.Point(153, 189);
-            this.dtpGiorno.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.dtpGiorno.Margin = new System.Windows.Forms.Padding(2);
             this.dtpGiorno.Name = "dtpGiorno";
             this.dtpGiorno.Size = new System.Drawing.Size(114, 29);
             this.dtpGiorno.TabIndex = 8;
@@ -144,7 +144,7 @@
             // 
             this.nudDurata.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.nudDurata.Location = new System.Drawing.Point(153, 245);
-            this.nudDurata.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.nudDurata.Margin = new System.Windows.Forms.Padding(2);
             this.nudDurata.Name = "nudDurata";
             this.nudDurata.Size = new System.Drawing.Size(58, 29);
             this.nudDurata.TabIndex = 11;
@@ -175,12 +175,13 @@
             // 
             this.btnPrenota.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnPrenota.Location = new System.Drawing.Point(126, 430);
-            this.btnPrenota.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnPrenota.Margin = new System.Windows.Forms.Padding(2);
             this.btnPrenota.Name = "btnPrenota";
             this.btnPrenota.Size = new System.Drawing.Size(247, 71);
             this.btnPrenota.TabIndex = 14;
             this.btnPrenota.Text = "PRENOTA";
             this.btnPrenota.UseVisualStyleBackColor = true;
+            this.btnPrenota.Click += new System.EventHandler(this.btnPrenota_Click);
             // 
             // cmbOrario
             // 
@@ -221,10 +222,12 @@
             this.Controls.Add(this.label1);
             this.Controls.Add(this.txtNome);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.MaximizeBox = false;
             this.Name = "Cliente";
             this.Text = "Prenota";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Cliente_FormClosing);
+            this.Load += new System.EventHandler(this.Cliente_Load);
             ((System.ComponentModel.ISupportInitialize)(this.nudDurata)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
