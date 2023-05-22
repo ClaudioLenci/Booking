@@ -60,12 +60,12 @@ namespace Classi
 
         public bool Libero(Prenotazione p)
         {
-            return prenotazioni.Any(p2 => (p2.inizio > p.inizio && p2.inizio < p.fine) || (p2.fine > p.inizio && p2.fine < p.fine));
+            return prenotazioni.Any(p2 => (p2.inizio <= p.inizio || p2.inizio >= p.fine) && (p2.fine <= p.inizio || p2.fine >= p.fine));
         }
 
         public bool Exists(int id)
         {
-            return prenotazioni.Any(p => p.id == id);
+            return prenotazioni.Exists(p => p.id == id);
         }
 
         public void AddPrenotazione(string nome, DateTime data_nascita, string tipologia, DateTime inizio, int durata, string altro)
