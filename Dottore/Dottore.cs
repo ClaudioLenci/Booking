@@ -14,6 +14,7 @@ namespace Dottore
     public partial class Dottore : Form
     {
         Calendario calendario;
+
         public Dottore()
         {
             InitializeComponent();
@@ -38,6 +39,14 @@ namespace Dottore
                 item.SubItems.Add(p.durata.ToString() + " ore");
                 item.SubItems.Add(p.altro);
                 lstPrenotazioni.Items.Add(item);
+            }
+        }
+
+        private void lstPrenotazioni_DoubleClick(object sender, EventArgs e)
+        {
+            if (lstPrenotazioni.SelectedItems.Count > 0)
+            {
+                int id = int.Parse(lstPrenotazioni.SelectedItems[0].SubItems[0].Text);
             }
         }
     }

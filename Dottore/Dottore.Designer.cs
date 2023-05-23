@@ -52,17 +52,21 @@
             this.columnHeader7,
             this.columnHeader8,
             this.columnHeader4});
-            this.lstPrenotazioni.Font = new System.Drawing.Font("Georgia", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lstPrenotazioni.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.lstPrenotazioni.Font = new System.Drawing.Font("Times New Roman", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lstPrenotazioni.ForeColor = System.Drawing.Color.Black;
+            this.lstPrenotazioni.FullRowSelect = true;
             this.lstPrenotazioni.GridLines = true;
             this.lstPrenotazioni.HideSelection = false;
-            this.lstPrenotazioni.Location = new System.Drawing.Point(9, 10);
-            this.lstPrenotazioni.Margin = new System.Windows.Forms.Padding(4, 4, 2, 2);
+            this.lstPrenotazioni.Location = new System.Drawing.Point(0, 0);
+            this.lstPrenotazioni.Margin = new System.Windows.Forms.Padding(5, 5, 3, 2);
+            this.lstPrenotazioni.MultiSelect = false;
             this.lstPrenotazioni.Name = "lstPrenotazioni";
-            this.lstPrenotazioni.Size = new System.Drawing.Size(632, 465);
+            this.lstPrenotazioni.Size = new System.Drawing.Size(867, 623);
             this.lstPrenotazioni.TabIndex = 0;
             this.lstPrenotazioni.UseCompatibleStateImageBehavior = false;
             this.lstPrenotazioni.View = System.Windows.Forms.View.Details;
+            this.lstPrenotazioni.DoubleClick += new System.EventHandler(this.lstPrenotazioni_DoubleClick);
             // 
             // columnHeader1
             // 
@@ -112,11 +116,11 @@
             // 
             // Dottore
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(650, 506);
+            this.ClientSize = new System.Drawing.Size(867, 623);
             this.Controls.Add(this.lstPrenotazioni);
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Name = "Dottore";
             this.Text = "Dottore";
             this.Load += new System.EventHandler(this.Dottore_Load);
