@@ -16,19 +16,13 @@ namespace Dottore
         private void btnModifica_Click(object sender, System.EventArgs e)
         {
             Modifica = true;
+            this.Close();
         }
 
         private void btnCancella_Click(object sender, System.EventArgs e)
         {
-            Modifica = true;
-        }
-
-        private void Editor_Load(object sender, System.EventArgs e)
-        {
-            if(Modifica)
-            {
-                this.Close();
-            }
+            Modifica = false;
+            this.Close();
         }
     }
 }

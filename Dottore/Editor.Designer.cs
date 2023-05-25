@@ -114,7 +114,6 @@
             this.Controls.Add(this.dtpGiorno);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.Name = "Editor";
-            this.Load += new System.EventHandler(this.Editor_Load);
             ((System.ComponentModel.ISupportInitialize)(this.nudDurata)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
