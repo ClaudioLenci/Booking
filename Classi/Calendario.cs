@@ -48,6 +48,11 @@ namespace Classi
             }
         }
 
+        public Prenotazione SearchPrenotazione(int id)
+        {
+            return prenotazioni.Where(p => p.id == id).FirstOrDefault();
+        }
+
         public List<Prenotazione> GetPrenotazioni()
         {
             return prenotazioni.OrderBy(p => p.inizio).ToList();
@@ -55,12 +60,12 @@ namespace Classi
 
         public List<Prenotazione> GetPrenotazioniFuture()
         {
-            return prenotazioni.OrderBy(p => p.inizio).Where(p => p.inizio >= DateTime.Today).ToList();
+            return prenotazioni.Where(p => p.inizio >= DateTime.Today).OrderBy(p => p.inizio).ToList();
         }
 
-        public bool Libero(Prenotazione p)
+        public bool Libero(DateTime inizio, DateTime fine)
         {
-            return prenotazioni.Any(p2 => (p2.inizio <= p.inizio || p2.inizio >= p.fine) && (p2.fine <= p.inizio || p2.fine >= p.fine));
+            return prenotazioni.All(p => (p.inizio <= inizio || p.inizio >= fine) && (p.fine <= inizio || p.inizio >= fine));
         }
 
         public bool Exists(int id)
@@ -80,6 +85,21 @@ namespace Classi
             {
                 prenotazioni.Remove(p);
             }
+        }
+
+        public List<string> GetSlots(DateTime data, int durata)
+        {
+            var slots = new List<string>();
+            for(int i = 0;i<max-min;i++)
+            {
+                DateTime inizio = data.Date;
+                inizio=inizio.AddHours(i+min);
+                if (Libero(inizio, inizio.AddHours(durata)))
+                {
+                    slots.Add(inizio.ToString().Substring(11, 5));
+                }
+            }
+            return slots;
         }
     }
 }

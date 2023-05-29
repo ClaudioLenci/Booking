@@ -20,9 +20,7 @@ namespace Classi
         {
             get
             {
-                DateTime fine = inizio;
-                fine.AddHours(durata);
-                return fine;
+                return inizio.AddHours(durata);
             }
         }
 
