@@ -23,14 +23,16 @@ namespace Cliente
         private void Cliente_Load(object sender, EventArgs e)
         {
             calendario = new Calendario(9, 20, @"../../../dati.csv");
-            dtpGiorno.MinDate = DateTime.Today;
+            dtpGiorno.MinDate = DateTime.Today.AddDays(1);
+            AggiornaSlots();
         }
 
         private void btnPrenota_Click(object sender, EventArgs e)
         {
             if (ControlloVuoti())
             {
-                calendario.AddPrenotazione(txtNome.Text, dtpNascita.Value, cmbTipologia.Text, dtpGiorno.Value, (int)nudDurata.Value, rtbAltro.Text);
+                string inizio = dtpGiorno.Value.ToString().Substring(0, 10) + " " + cmbOrario.Items[cmbOrario.SelectedIndex] + ":00";
+                calendario.AddPrenotazione(txtNome.Text, dtpNascita.Value.Date, cmbTipologia.Text, DateTime.Parse(inizio), (int)nudDurata.Value, rtbAltro.Text);
                 Pulisci();
             }
             else
@@ -55,7 +57,7 @@ namespace Cliente
             txtNome.Text = "";
             dtpNascita.Value = DateTime.Today;
             cmbTipologia.SelectedIndex = -1;
-            dtpGiorno.Value = DateTime.Today;
+            dtpGiorno.Value = DateTime.Today.AddDays(1);
             cmbOrario.SelectedIndex = -1;
             nudDurata.Value = 1;
             rtbAltro.Text = "";
@@ -64,6 +66,27 @@ namespace Cliente
         private void Cliente_FormClosing(object sender, FormClosingEventArgs e)
         {
             calendario.salvadati();
+        }
+
+        private void dtpGiorno_ValueChanged(object sender, EventArgs e)
+        {
+            AggiornaSlots();
+        }
+
+        private void AggiornaSlots()
+        {
+            cmbOrario.SelectedIndex = -1;
+            cmbOrario.Items.Clear();
+            var slots = calendario.GetSlots(dtpGiorno.Value.Date, (int)nudDurata.Value);
+            foreach (var item in slots)
+            {
+                cmbOrario.Items.Add(item);
+            }
+        }
+
+        private void nudDurata_ValueChanged(object sender, EventArgs e)
+        {
+            AggiornaSlots();
         }
     }
 }

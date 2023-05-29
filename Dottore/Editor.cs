@@ -13,11 +13,12 @@ namespace Dottore
         {
             InitializeComponent();
         }
+
         private void Riempi()
         {
             var prenotazione = calendario.SearchPrenotazione(id);
             dtpGiorno.Text = prenotazione.inizio.Date.ToString().Substring(0, 10);
-            cmbOrario.Text = prenotazione.inizio.TimeOfDay.ToString().Substring(0, 5);
+            cmbOrario.SelectedText = prenotazione.inizio.TimeOfDay.ToString().Substring(0, 5);
             nudDurata.Value = prenotazione.durata;
             rtbAltro.Text = prenotazione.altro;
             lblNome.Text = prenotazione.nome;
@@ -27,7 +28,8 @@ namespace Dottore
 
         private void btnModifica_Click(object sender, System.EventArgs e)
         {
-            Prenotazione prenotazione = new Prenotazione(id, lblNome.Text, DateTime.Parse(lblData.Text), lblTipologia.Text, dtpGiorno.Value, (int)nudDurata.Value, rtbAltro.Text);
+            string inizio = dtpGiorno.Value.ToString().Substring(0, 10) + " " + cmbOrario.Items[cmbOrario.SelectedIndex] + ":00";
+            Prenotazione prenotazione = new Prenotazione(id, lblNome.Text, DateTime.Parse(lblData.Text), lblTipologia.Text, DateTime.Parse(inizio), (int)nudDurata.Value, rtbAltro.Text);
             calendario.ModifyPrenotazione(id, prenotazione);
             this.Close();
         }
@@ -41,6 +43,28 @@ namespace Dottore
         private void Editor_Load(object sender, System.EventArgs e)
         {
             Riempi();
+            dtpGiorno.MinDate = dtpGiorno.Value;
+        }
+
+        private void AggiornaSlots()
+        {
+            cmbOrario.SelectedIndex = -1;
+            cmbOrario.Items.Clear();
+            var slots = calendario.GetSlots(dtpGiorno.Value.Date, (int)nudDurata.Value);
+            foreach (var item in slots)
+            {
+                cmbOrario.Items.Add(item);
+            }
+        }
+
+        private void dtpGiorno_ValueChanged(object sender, EventArgs e)
+        {
+            AggiornaSlots();
+        }
+
+        private void nudDurata_ValueChanged(object sender, EventArgs e)
+        {
+            AggiornaSlots();
         }
     }
 }

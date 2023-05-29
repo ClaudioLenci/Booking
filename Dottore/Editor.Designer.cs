@@ -54,6 +54,7 @@
             resources.ApplyResources(this.dtpGiorno, "dtpGiorno");
             this.dtpGiorno.Format = System.Windows.Forms.DateTimePickerFormat.Short;
             this.dtpGiorno.Name = "dtpGiorno";
+            this.dtpGiorno.ValueChanged += new System.EventHandler(this.dtpGiorno_ValueChanged);
             // 
             // label4
             // 
@@ -75,6 +76,7 @@
             // 
             resources.ApplyResources(this.nudDurata, "nudDurata");
             this.nudDurata.Name = "nudDurata";
+            this.nudDurata.ValueChanged += new System.EventHandler(this.nudDurata_ValueChanged);
             // 
             // label6
             // 
