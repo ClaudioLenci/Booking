@@ -41,6 +41,14 @@ namespace Dottore
                 item.SubItems.Add(p.altro);
                 lstPrenotazioni.Items.Add(item);
             }
+            for (int i=0; i<lstPrenotazioni.Columns.Count; i++)
+            {
+                lstPrenotazioni.Columns[i].Width = -1;
+                int w = lstPrenotazioni.Columns[i].Width;
+                lstPrenotazioni.Columns[i].Width = -2;
+                w = Math.Max(w, lstPrenotazioni.Columns[i].Width);
+                lstPrenotazioni.Columns[i].Width = w;
+            }
         }
 
         private void lstPrenotazioni_DoubleClick(object sender, EventArgs e)

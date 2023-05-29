@@ -28,7 +28,7 @@ namespace Dottore
 
         private void btnModifica_Click(object sender, System.EventArgs e)
         {
-            string inizio = dtpGiorno.Value.ToString().Substring(0, 10) + " " + cmbOrario.Items[cmbOrario.SelectedIndex] + ":00";
+            string inizio = dtpGiorno.Value.ToString().Substring(0, 10) + " " + cmbOrario.Text + ":00";
             Prenotazione prenotazione = new Prenotazione(id, lblNome.Text, DateTime.Parse(lblData.Text), lblTipologia.Text, DateTime.Parse(inizio), (int)nudDurata.Value, rtbAltro.Text);
             calendario.ModifyPrenotazione(id, prenotazione);
             this.Close();

@@ -71,48 +71,49 @@
             // columnHeader1
             // 
             this.columnHeader1.Text = "Id";
-            this.columnHeader1.Width = 50;
+            this.columnHeader1.Width = 25;
             // 
             // columnHeader2
             // 
             this.columnHeader2.Text = "Nome";
             this.columnHeader2.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.columnHeader2.Width = 25;
             // 
             // columnHeader3
             // 
             this.columnHeader3.Text = "Data di nascita";
             this.columnHeader3.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.columnHeader3.Width = 112;
+            this.columnHeader3.Width = 25;
             // 
             // columnHeader5
             // 
             this.columnHeader5.Text = "Tipologia";
             this.columnHeader5.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.columnHeader5.Width = 82;
+            this.columnHeader5.Width = 25;
             // 
             // columnHeader6
             // 
             this.columnHeader6.Text = "Giorno inizio";
             this.columnHeader6.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.columnHeader6.Width = 92;
+            this.columnHeader6.Width = 25;
             // 
             // columnHeader7
             // 
             this.columnHeader7.Text = "Ora inizio";
             this.columnHeader7.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.columnHeader7.Width = 77;
+            this.columnHeader7.Width = 25;
             // 
             // columnHeader8
             // 
             this.columnHeader8.Text = "Durata";
             this.columnHeader8.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.columnHeader8.Width = 75;
+            this.columnHeader8.Width = 25;
             // 
             // columnHeader4
             // 
             this.columnHeader4.Text = "Altre info";
             this.columnHeader4.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.columnHeader4.Width = 77;
+            this.columnHeader4.Width = 25;
             // 
             // Dottore
             // 
@@ -120,7 +121,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(650, 506);
             this.Controls.Add(this.lstPrenotazioni);
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "Dottore";
             this.Text = "Dottore";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Dottore_FormClosing);
