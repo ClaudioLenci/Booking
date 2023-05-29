@@ -1,4 +1,5 @@
 ﻿using Classi;
+using System;
 using System.Windows.Forms;
 
 namespace Dottore
@@ -26,18 +27,20 @@ namespace Dottore
 
         private void btnModifica_Click(object sender, System.EventArgs e)
         {
+            Prenotazione prenotazione = new Prenotazione(id, lblNome.Text, DateTime.Parse(lblData.Text), lblTipologia.Text, dtpGiorno.Value, (int)nudDurata.Value, rtbAltro.Text);
+            calendario.ModifyPrenotazione(id, prenotazione);
             this.Close();
         }
 
         private void btnCancella_Click(object sender, System.EventArgs e)
         {
+            calendario.RemovePrenotazione(id);
             this.Close();
         }
 
         private void Editor_Load(object sender, System.EventArgs e)
         {
             Riempi();
-
         }
     }
 }

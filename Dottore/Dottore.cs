@@ -28,6 +28,7 @@ namespace Dottore
 
         private void RiempiListview()
         {
+            lstPrenotazioni.Items.Clear();
             foreach (var p in calendario.prenotazioni)
             {
                 ListViewItem item = new ListViewItem(p.id.ToString());
@@ -51,7 +52,13 @@ namespace Dottore
                 editor.calendario = calendario;
                 editor.ShowDialog();
                 calendario = editor.calendario;
+                RiempiListview();
             }
+        }
+
+        private void Dottore_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            calendario.salvadati();
         }
     }
 }

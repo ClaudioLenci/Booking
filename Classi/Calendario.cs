@@ -50,7 +50,7 @@ namespace Classi
 
         public Prenotazione SearchPrenotazione(int id)
         {
-            return prenotazioni.Where(p => p.id == id).FirstOrDefault();
+            return prenotazioni.Find(p => p.id == id);
         }
 
         public List<Prenotazione> GetPrenotazioni()
@@ -90,16 +90,22 @@ namespace Classi
         public List<string> GetSlots(DateTime data, int durata)
         {
             var slots = new List<string>();
-            for(int i = 0;i<max-min;i++)
+            for(int i=0;i<max-min;i++)
             {
                 DateTime inizio = data.Date;
-                inizio=inizio.AddHours(i+min);
+                inizio = inizio.AddHours(i + min);
                 if (Libero(inizio, inizio.AddHours(durata)))
                 {
                     slots.Add(inizio.ToString().Substring(11, 5));
                 }
             }
             return slots;
+        }
+
+        public void ModifyPrenotazione(int id, Prenotazione newpr)
+        {
+            int index = prenotazioni.FindIndex(p => p.id == id);
+            prenotazioni[index] = newpr;
         }
     }
 }
