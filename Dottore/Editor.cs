@@ -5,9 +5,8 @@ namespace Dottore
 {
     public partial class Editor : Form
     {
-        public Calendario calendario;
-        public Prenotazione prenotazione { get; set; }
-        public bool Modifica { get; set; }
+        public Calendario calendario { get; set; }
+        public int id { get; set; }
 
         public Editor()
         {
@@ -15,6 +14,7 @@ namespace Dottore
         }
         private void Riempi()
         {
+            var prenotazione = calendario.SearchPrenotazione(id);
             dtpGiorno.Text = prenotazione.inizio.Date.ToString().Substring(0, 10);
             cmbOrario.Text = prenotazione.inizio.TimeOfDay.ToString().Substring(0, 5);
             nudDurata.Value = prenotazione.durata;
@@ -26,13 +26,11 @@ namespace Dottore
 
         private void btnModifica_Click(object sender, System.EventArgs e)
         {
-            Modifica = true;
             this.Close();
         }
 
         private void btnCancella_Click(object sender, System.EventArgs e)
         {
-            Modifica = false;
             this.Close();
         }
 

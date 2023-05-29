@@ -46,7 +46,11 @@ namespace Dottore
         {
             if (lstPrenotazioni.SelectedItems.Count > 0)
             {
-                int id = int.Parse(lstPrenotazioni.SelectedItems[0].SubItems[0].Text);
+                Editor editor = new Editor();
+                editor.id = int.Parse(lstPrenotazioni.SelectedItems[0].SubItems[0].Text);
+                editor.calendario = calendario;
+                editor.ShowDialog();
+                calendario = editor.calendario;
             }
         }
     }
