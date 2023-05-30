@@ -14,6 +14,8 @@ namespace Dottore
     public partial class Dottore : Form
     {
         Calendario calendario;
+        DateTime inizio;
+        DateTime fine;
 
         public Dottore()
         {
@@ -23,13 +25,22 @@ namespace Dottore
         private void Dottore_Load(object sender, EventArgs e)
         {
             calendario = new Calendario(9, 20, @"../../../dati.csv");
+            cbInizio.Checked = true;
+            dtpInizio.Value = DateTime.Today;
+            dtpInizio.MaxDate = DateTime.Today.AddDays(1);
+            inizio = DateTime.Today;
+            cbFine.Checked = false;
+            dtpFine.Enabled = false;
+            dtpFine.Value = inizio.AddDays(1);
+            dtpFine.MinDate = inizio.AddDays(1);
+            fine = DateTime.MaxValue;
             RiempiListview();
         }
 
         private void RiempiListview()
         {
             lstPrenotazioni.Items.Clear();
-            foreach (var p in calendario.prenotazioni)
+            foreach (var p in calendario.GetPrenotazioni(inizio, fine))
             {
                 ListViewItem item = new ListViewItem(p.id.ToString());
                 item.SubItems.Add(p.nome);
@@ -67,6 +78,40 @@ namespace Dottore
         private void Dottore_FormClosing(object sender, FormClosingEventArgs e)
         {
             calendario.salvadati();
+        }
+
+        private void cbInizio_CheckedChanged(object sender, EventArgs e)
+        {
+            dtpInizio.Enabled = cbInizio.Checked;
+            if (cbInizio.Checked)
+                inizio = dtpInizio.Value.Date;
+            else
+                inizio = DateTime.MinValue;
+            RiempiListview();
+        }
+
+        private void cbFine_CheckedChanged(object sender, EventArgs e)
+        {
+            dtpFine.Enabled = cbFine.Checked;
+            if (cbFine.Checked)
+                fine = dtpFine.Value.Date;
+            else
+                fine = DateTime.MaxValue;
+            RiempiListview();
+        }
+
+        private void dtpInizio_ValueChanged(object sender, EventArgs e)
+        {
+            dtpFine.MinDate = dtpInizio.Value.Date;
+            inizio = dtpInizio.Value.Date;
+            RiempiListview();
+        }
+
+        private void dtpFine_ValueChanged(object sender, EventArgs e)
+        {
+            dtpInizio.MaxDate = dtpFine.Value.Date;
+            fine = dtpFine.Value.Date;
+            RiempiListview();
         }
     }
 }

@@ -80,7 +80,7 @@ namespace Dottore
         private void Editor_Load(object sender, System.EventArgs e)
         {
             Riempi();
-            dtpGiorno.MinDate = dtpGiorno.Value;
+            dtpGiorno.MinDate = DateTime.Today;
         }
 
         private void AggiornaSlots()

@@ -58,9 +58,9 @@ namespace Classi
             return prenotazioni.OrderBy(p => p.inizio).ToList();
         }
 
-        public List<Prenotazione> GetPrenotazioniFuture()
+        public List<Prenotazione> GetPrenotazioni(DateTime inizio, DateTime fine)
         {
-            return prenotazioni.Where(p => p.inizio >= DateTime.Today).OrderBy(p => p.inizio).ToList();
+            return prenotazioni.Where(p => p.inizio.Date >= inizio.Date && p.inizio.Date <= fine.Date).OrderBy(p => p.inizio).ToList();
         }
 
         public bool Libero(DateTime inizio, DateTime fine)
