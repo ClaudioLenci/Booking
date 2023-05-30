@@ -22,8 +22,12 @@ namespace Cliente
 
         private void Cliente_Load(object sender, EventArgs e)
         {
-            calendario = new Calendario(9, 20, @"../../../dati.csv");
+            calendario = new Calendario(9, 20, @"../../../dati.csv", @"../../../tipi.txt");
             dtpGiorno.MinDate = DateTime.Today.AddDays(1);
+            foreach(var t in calendario.tipologie)
+            {
+                cmbTipologia.Items.Add(t);
+            }
             AggiornaSlots();
         }
 

@@ -92,8 +92,6 @@
             // 
             this.cmbTipologia.Font = new System.Drawing.Font("Times New Roman", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cmbTipologia.FormattingEnabled = true;
-            this.cmbTipologia.Items.AddRange(new object[] {
-            "Ciao"});
             this.cmbTipologia.Location = new System.Drawing.Point(153, 136);
             this.cmbTipologia.Margin = new System.Windows.Forms.Padding(2);
             this.cmbTipologia.Name = "cmbTipologia";

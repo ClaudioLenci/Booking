@@ -1,0 +1,7 @@
+visita cardiologica
+visita endocrinologica
+visita gastroenterologica
+visita neurologica
+visita ortopedica
+visita pneumologica
+visita urologica

@@ -24,7 +24,7 @@ namespace Dottore
 
         private void Dottore_Load(object sender, EventArgs e)
         {
-            calendario = new Calendario(9, 20, @"../../../dati.csv");
+            calendario = new Calendario(9, 20, @"../../../dati.csv", @"../../../tipi.txt");
             cbInizio.Checked = true;
             dtpInizio.Value = DateTime.Today;
             dtpInizio.MaxDate = DateTime.Today.AddDays(1);

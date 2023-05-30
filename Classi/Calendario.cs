@@ -13,16 +13,22 @@ namespace Classi
     public class Calendario
     {
         public List<Prenotazione> prenotazioni { get; set; }
+        public readonly List<string> tipologie;
         public int min;
         public int max;
         private string file;
 
-        public Calendario(int min, int max, string file)
+        public Calendario(int min, int max, string filedati, string filetipi)
         {
             prenotazioni = new List<Prenotazione>();
             this.min = min;
             this.max = max;
-            this.file = file;
+            this.file = filedati;
+            var file2 = filetipi;
+            using (var reader = new StreamReader(file2))
+            {
+                tipologie = reader.ReadToEnd().Split('\n').ToList();
+            }
             apridati();
         }
 
