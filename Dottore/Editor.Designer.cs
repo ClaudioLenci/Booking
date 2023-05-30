@@ -46,6 +46,9 @@
             this.label8 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.lblTipologia = new System.Windows.Forms.Label();
+            this.lblGiorno = new System.Windows.Forms.Label();
+            this.lblOrario = new System.Windows.Forms.Label();
+            this.lblDurata = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.nudDurata)).BeginInit();
             this.SuspendLayout();
             // 
@@ -142,10 +145,28 @@
             resources.ApplyResources(this.lblTipologia, "lblTipologia");
             this.lblTipologia.Name = "lblTipologia";
             // 
+            // lblGiorno
+            // 
+            resources.ApplyResources(this.lblGiorno, "lblGiorno");
+            this.lblGiorno.Name = "lblGiorno";
+            // 
+            // lblOrario
+            // 
+            resources.ApplyResources(this.lblOrario, "lblOrario");
+            this.lblOrario.Name = "lblOrario";
+            // 
+            // lblDurata
+            // 
+            resources.ApplyResources(this.lblDurata, "lblDurata");
+            this.lblDurata.Name = "lblDurata";
+            // 
             // Editor
             // 
             resources.ApplyResources(this, "$this");
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.lblDurata);
+            this.Controls.Add(this.lblOrario);
+            this.Controls.Add(this.lblGiorno);
             this.Controls.Add(this.lblTipologia);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label8);
@@ -192,5 +213,8 @@
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label lblTipologia;
+        private System.Windows.Forms.Label lblGiorno;
+        private System.Windows.Forms.Label lblOrario;
+        private System.Windows.Forms.Label lblDurata;
     }
 }

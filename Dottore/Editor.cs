@@ -18,22 +18,40 @@ namespace Dottore
         private void Riempi()
         {
             prenotazione = calendario.SearchPrenotazione(id);
-            dtpGiorno.Text = prenotazione.inizio.Date.ToString().Substring(0, 10);
-            cmbOrario.SelectedText = prenotazione.inizio.TimeOfDay.ToString().Substring(0, 5);
-            nudDurata.Value = prenotazione.durata;
-            rtbAltro.Text = prenotazione.altro;
             lblNome.Text = prenotazione.nome;
             lblData.Text = prenotazione.data_nascita.ToString().Substring(0, 10);
             lblTipologia.Text = prenotazione.tipologia;
+            if (prenotazione.inizio.Date <= DateTime.Today)
+            {
+                lblGiorno.Text = prenotazione.inizio.ToString().Substring(0, 10);
+                lblOrario.Text = prenotazione.inizio.ToString().Substring(11, 5);
+                lblDurata.Text = prenotazione.durata.ToString();
+                dtpGiorno.Visible = false;
+                cmbOrario.Visible = false;
+                nudDurata.Visible = false;
+            }
+            else
+            {
+                dtpGiorno.Value = prenotazione.inizio.Date;
+                cmbOrario.SelectedText = prenotazione.inizio.TimeOfDay.ToString().Substring(0, 5);
+                nudDurata.Value = prenotazione.durata;
+                lblGiorno.Visible = false;
+                lblOrario.Visible = false;
+                lblDurata.Visible = false;
+            }
+            rtbAltro.Text = prenotazione.altro;
         }
 
         private void btnModifica_Click(object sender, System.EventArgs e)
         {
             if (ControlloVuoti())
             {
-                string inizio = dtpGiorno.Value.ToString().Substring(0, 10) + " " + cmbOrario.Text + ":00";
-                prenotazione.inizio = DateTime.Parse(inizio);
-                prenotazione.durata = (int)nudDurata.Value;
+                if (prenotazione.inizio.Date > DateTime.Today)
+                {
+                    string inizio = dtpGiorno.Value.ToString().Substring(0, 10) + " " + cmbOrario.Text + ":00";
+                    prenotazione.inizio = DateTime.Parse(inizio);
+                    prenotazione.durata = (int)nudDurata.Value;
+                }
                 prenotazione.altro = rtbAltro.Text;
                 calendario.ModifyPrenotazione(id, prenotazione);
                 this.Close();
@@ -46,9 +64,10 @@ namespace Dottore
 
         private bool ControlloVuoti()
         {
-            if (cmbOrario.SelectedIndex == -1)
-                if(prenotazione.inizio.ToString().Substring(11, 5) != cmbOrario.Text)
-                    return false;
+            if(prenotazione.inizio.Date > DateTime.Today)
+                if (cmbOrario.SelectedIndex == -1)
+                    if(prenotazione.inizio.ToString().Substring(11, 5) != cmbOrario.Text)
+                        return false;
             return true;
         }
 
