@@ -8,6 +8,7 @@ namespace Dottore
     {
         public Calendario calendario { get; set; }
         public int id { get; set; }
+        private Prenotazione prenotazione;
 
         public Editor()
         {
@@ -16,7 +17,7 @@ namespace Dottore
 
         private void Riempi()
         {
-            var prenotazione = calendario.SearchPrenotazione(id);
+            prenotazione = calendario.SearchPrenotazione(id);
             dtpGiorno.Text = prenotazione.inizio.Date.ToString().Substring(0, 10);
             cmbOrario.SelectedText = prenotazione.inizio.TimeOfDay.ToString().Substring(0, 5);
             nudDurata.Value = prenotazione.durata;
@@ -28,10 +29,27 @@ namespace Dottore
 
         private void btnModifica_Click(object sender, System.EventArgs e)
         {
-            string inizio = dtpGiorno.Value.ToString().Substring(0, 10) + " " + cmbOrario.Text + ":00";
-            Prenotazione prenotazione = new Prenotazione(id, lblNome.Text, DateTime.Parse(lblData.Text), lblTipologia.Text, DateTime.Parse(inizio), (int)nudDurata.Value, rtbAltro.Text);
-            calendario.ModifyPrenotazione(id, prenotazione);
-            this.Close();
+            if (ControlloVuoti())
+            {
+                string inizio = dtpGiorno.Value.ToString().Substring(0, 10) + " " + cmbOrario.Text + ":00";
+                prenotazione.inizio = DateTime.Parse(inizio);
+                prenotazione.durata = (int)nudDurata.Value;
+                prenotazione.altro = rtbAltro.Text;
+                calendario.ModifyPrenotazione(id, prenotazione);
+                this.Close();
+            }
+            else
+            {
+                MessageBox.Show("Immettere valori validi!");
+            }
+        }
+
+        private bool ControlloVuoti()
+        {
+            if (cmbOrario.SelectedIndex == -1)
+                if(prenotazione.inizio.ToString().Substring(11, 5) != cmbOrario.Text)
+                    return false;
+            return true;
         }
 
         private void btnCancella_Click(object sender, System.EventArgs e)
